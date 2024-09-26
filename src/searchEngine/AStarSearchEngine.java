@@ -20,10 +20,14 @@ public class AStarSearchEngine extends AbstractSearchEngine {
     }
 
     private void aStarSearch() {
+        
         // Cola de prioridad para la lista abierta, ordenada por f(n) = g(n) + h(n)
         PriorityQueue<Node> openList = new PriorityQueue<>(Comparator.comparingInt(n -> n.fCost));
         HashSet<Dimension> closedList = new HashSet<>();  // Lista cerrada para rastrear nodos visitados
         HashMap<Dimension, Dimension> parentMap = new HashMap<>();  // Para reconstruir el camino
+
+        //TIEMPO: 
+        long inicioSelection = System.nanoTime();
 
         Node startNode = new Node(startLoc, 0, heuristic(startLoc, goalLoc));
         openList.add(startNode);  // Agregar el nodo inicial a la lista abierta
@@ -63,6 +67,9 @@ public class AStarSearchEngine extends AbstractSearchEngine {
                 }
             }
         }
+        //FIN TIEMPO
+        long tiempoEstimado = System.nanoTime() - inicioSelection;
+        System.out.println("Tiempo total del Arreglo1: " + tiempoEstimado + " nanosegundos");
     }
 
     @Override

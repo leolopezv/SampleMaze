@@ -18,6 +18,9 @@ public class BreadthFirstSearchEngine extends AbstractSearchEngine {
         HashSet<Dimension> closedList = new HashSet<>();
         HashMap<Dimension, Dimension> parentMap = new HashMap<>();
 
+        
+        long inicioSelection = System.nanoTime();
+
         openList.add(startLoc); // Add start location to open list
         maze.setValue(startLoc.width, startLoc.height, (short) 1); // Mark start as depth 1
 
@@ -42,5 +45,7 @@ public class BreadthFirstSearchEngine extends AbstractSearchEngine {
                 }
             }
         }
+        long tiempoEstimado = System.nanoTime() - inicioSelection;
+        System.out.println("Tiempo total: " + tiempoEstimado + " nanosegundos");
     }
 }
