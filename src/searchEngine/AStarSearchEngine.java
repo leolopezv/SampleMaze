@@ -9,7 +9,13 @@ public class AStarSearchEngine extends AbstractSearchEngine {
 
     public AStarSearchEngine(int width, int height) {
         super(width, height);
+
+        long inicioTotal = System.nanoTime();
+
         aStarSearch();
+
+        long tiempoTotal = System.nanoTime() - inicioTotal;
+        System.out.println("Tiempo total de ejecución: " + tiempoTotal + " nanosegundos");
     }
 
     // Función heurística: Usando la distancia de Manhattan para este ejemplo
@@ -20,6 +26,7 @@ public class AStarSearchEngine extends AbstractSearchEngine {
     }
 
     private void aStarSearch() {
+        
         // Cola de prioridad para la lista abierta, ordenada por f(n) = g(n) + h(n)
         PriorityQueue<Node> openList = new PriorityQueue<>(Comparator.comparingInt(n -> n.fCost));
         HashSet<Dimension> closedList = new HashSet<>();  // Lista cerrada para rastrear nodos visitados

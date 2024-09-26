@@ -10,13 +10,22 @@ public class BreadthFirstSearchEngine extends AbstractSearchEngine {
 
     public BreadthFirstSearchEngine(int width, int height) {
         super(width, height);
+
+        long inicioTotal = System.nanoTime();
+
         breadthFirstSearch();
+
+        long tiempoTotal = System.nanoTime() - inicioTotal;
+        System.out.println("Tiempo total de ejecución: " + tiempoTotal + " nanosegundos");
     }
 
     private void breadthFirstSearch() {
         Queue<Dimension> openList = new LinkedList<>();
         HashSet<Dimension> closedList = new HashSet<>();
         HashMap<Dimension, Dimension> parentMap = new HashMap<>();
+
+        
+        long inicioSelection = System.nanoTime();
 
         openList.add(startLoc); // Add start location to open list
         maze.setValue(startLoc.width, startLoc.height, (short) 1); // Mark start as depth 1
@@ -42,5 +51,7 @@ public class BreadthFirstSearchEngine extends AbstractSearchEngine {
                 }
             }
         }
+        long tiempoEstimado = System.nanoTime() - inicioSelection;
+        System.out.println("Tiempo total: " + tiempoEstimado + " nanosegundos");
     }
 }
