@@ -12,7 +12,12 @@ import java.awt.*;
 public class DepthFirstSearchEngine extends AbstractSearchEngine {
     public DepthFirstSearchEngine(int width, int height) {
         super(width, height);
+        long inicioTotal = System.nanoTime();
+
         depthFirstSearch(startLoc, 1);
+
+        long tiempoTotal = System.nanoTime() - inicioTotal;
+        System.out.println("Tiempo total de ejecución: " + tiempoTotal + " nanosegundos");
     }
 
     private void depthFirstSearch(Dimension loc, int depth) {

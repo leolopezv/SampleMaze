@@ -9,7 +9,13 @@ public class AStarSearchEngine extends AbstractSearchEngine {
 
     public AStarSearchEngine(int width, int height) {
         super(width, height);
+
+        long inicioTotal = System.nanoTime();
+
         aStarSearch();
+
+        long tiempoTotal = System.nanoTime() - inicioTotal;
+        System.out.println("Tiempo total de ejecución: " + tiempoTotal + " nanosegundos");
     }
 
     // Función heurística: Usando la distancia de Manhattan para este ejemplo
@@ -25,9 +31,6 @@ public class AStarSearchEngine extends AbstractSearchEngine {
         PriorityQueue<Node> openList = new PriorityQueue<>(Comparator.comparingInt(n -> n.fCost));
         HashSet<Dimension> closedList = new HashSet<>();  // Lista cerrada para rastrear nodos visitados
         HashMap<Dimension, Dimension> parentMap = new HashMap<>();  // Para reconstruir el camino
-
-        //TIEMPO: 
-        long inicioSelection = System.nanoTime();
 
         Node startNode = new Node(startLoc, 0, heuristic(startLoc, goalLoc));
         openList.add(startNode);  // Agregar el nodo inicial a la lista abierta
@@ -67,9 +70,6 @@ public class AStarSearchEngine extends AbstractSearchEngine {
                 }
             }
         }
-        //FIN TIEMPO
-        long tiempoEstimado = System.nanoTime() - inicioSelection;
-        System.out.println("Tiempo total del Arreglo1: " + tiempoEstimado + " nanosegundos");
     }
 
     @Override

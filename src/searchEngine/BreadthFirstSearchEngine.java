@@ -10,7 +10,13 @@ public class BreadthFirstSearchEngine extends AbstractSearchEngine {
 
     public BreadthFirstSearchEngine(int width, int height) {
         super(width, height);
+
+        long inicioTotal = System.nanoTime();
+
         breadthFirstSearch();
+
+        long tiempoTotal = System.nanoTime() - inicioTotal;
+        System.out.println("Tiempo total de ejecución: " + tiempoTotal + " nanosegundos");
     }
 
     private void breadthFirstSearch() {
