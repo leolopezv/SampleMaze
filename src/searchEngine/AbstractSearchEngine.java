@@ -4,7 +4,7 @@ package searchEngine; /**
  * Copyright:    Copyright (c) Mark Watson, Released under Open Source Artistic License<p>
  * Company:      Mark Watson Associates<p>
  * @author Mark Watson
- * @version 1.0
+ * @version 1.0 O(n) searchPath, tiempo, getpossiblemoves
  */
 import maze1.Maze;
 
